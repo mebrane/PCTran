@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Lista de transportes</title>
+</h:head>
+<h:body>
+	<h:form id="form1">
+		<table align="center">
+			<tr>
+				<td colspan="2" align="center"><b><h:outputText
+							value="Buscar transportes" /></b></td>
+			</tr>
+			<tr>
+				<td><h:outputText value="ID:" /></td>
+				<td><h:inputText value="#{transporteBean.tran_desc}" /> <p:commandButton
+						value="Buscar" actionListener="#{transporteBean.busqueda}"
+						icon="ui-icon-search" update="@form" ajax="true" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><p:dataTable var="listaCargada"
+						value="#{transporteBean.listaTransportes}" rows="5" paginator="true">
+						<f:facet name="header">
+							<h:outputText value="transportes Listados" />
+						</f:facet>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="ID" />
+							</f:facet>
+							<h:outputText value="#{listaCargada.tran_id}"></h:outputText>
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="transporte" />
+							</f:facet>
+							<h:outputText
+								value="#{listaCargada.tran_desc}"></h:outputText>
+						</p:column>
+				
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Acciones" />
+							</f:facet>
+
+							<p:commandLink value="Eliminar"
+								actionListener="#{transporteBean.seleccionar}"		
+								onclick="PF('cd').show()"
+								>
+								<f:attribute name="atributo_id" value="#{listaCargada.tran_id}"></f:attribute>
+							</p:commandLink>
+							|
+							<p:commandLink value="Editar"
+								actionListener="#{transporteBean.obtener_datos}"
+								action="/xhtml/transporte.xhtml"
+								>
+								<f:attribute name="atributo_id" value="#{listaCargada.tran_id}"></f:attribute>
+							</p:commandLink>
+							<p:confirmDialog message="Desea eliminar?"
+								header="Confirmacion!!!" severity="alert" widgetVar="cd">
+								<p:commandButton value="Si"
+									actionListener="#{transporteBean.borrar}" ajax="true"
+									update="@form" onclick="PF('cd').hide();">
+									<f:attribute name="atributo_id" value="#{listaCargada.tran_id}"></f:attribute>
+								</p:commandButton>
+								<p:commandButton value="No" onclick="PF('cd').hide();"
+									type="button" />
+							</p:confirmDialog>
+
+						</p:column>
+						<f:facet name="footer">Existen <h:outputText
+								value="#{transporteBean.listaTransportesTamano}" /> registros</f:facet>
+					</p:dataTable></td>
+			</tr>
+		</table>
+	</h:form>
+	<h:form id="form2">
+		<h:commandLink value="Principal" action="/xhtml/principal.xhtml"></h:commandLink>
+	</h:form>
+</h:body>
+</html>
