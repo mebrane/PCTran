@@ -26,4 +26,31 @@ public class Modelo {
 	private String mode_desc;
 	@Temporal(TemporalType.DATE)
 	private Date mode_freg;
+	public int getMode_id() {
+		return mode_id;
+	}
+	public void setMode_id(int mode_id) {
+		this.mode_id = mode_id;
+	}
+	public TipoModelo getTipoModelo() {
+		return tipoModelo;
+	}
+	public void setTipoModelo(TipoModelo tipoModelo) {
+		this.tipoModelo = tipoModelo;
+	}
+	public String getMode_desc() {
+		return mode_desc;
+	}
+	public void setMode_desc(String mode_desc) {
+		this.mode_desc = mode_desc;
+	}
+	public Date getMode_freg() {
+		return mode_freg;
+	}
+	public void setMode_freg(Date mode_freg) {
+		this.mode_freg = mode_freg;
+	}
+	
+	
+	
 }

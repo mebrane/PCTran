@@ -24,65 +24,37 @@
 			<tr>
 				<th><h:outputText value="Tipo de transporte" /></th>
 				<td><h:selectOneMenu
-						value="#{transporteBean.tipoTransporte.tdoc_id}" var="cboTdoc"
+						value="#{transporteBean.tipoTransporte.ttra_id}" var="cboTtr"
 						class="ui-selectonemenu-label ui-inputfield ui-corner-all">
 						<f:selectItem itemValue="-1"
 							itemLabel="-Seleccionar tipo de documento-" />
-						<f:selectItems value="#{transporteBean.listaTipoDocumento}"
-							var="tdocs" itemValue="#{tdocs.tdoc_id}"
-							itemLabel="#{tdocs.tdoc_nomb}" />
+						<f:selectItems value="#{transporteBean.listaTiposTransporte}"
+							var="tt" itemValue="#{tt.ttra_id}"
+							itemLabel="#{tt.ttra_desc}" />
 					</h:selectOneMenu></td>
 			</tr>
+			
 			<tr>
-				<td><h:outputText value="Documento:" /></td>
-				<td><h:inputText value="#{transporteBean.tran_docu}"
+				<td><h:outputText value="Descripción (s):" /></td>
+				<td><h:inputText value="#{transporteBean.tran_desc}"
 						maxlength="30" /></td>
 			</tr>
-			<tr>
-				<td><h:outputText value="Nombre (s):" /></td>
-				<td><h:inputText value="#{transporteBean.tran_nomb}"
-						maxlength="30" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Apellido:" /></td>
-				<td><h:inputText value="#{transporteBean.tran_apel}"
-						maxlength="30" /></td>
-			</tr>
-			<tr>
-				<th>Tipo de transporte:</th>
-				<td><h:selectOneMenu value="#{transporteBean.tran_tipo}"
-						var="cboTipo"
+			
+
+		<tr>
+				<th><h:outputText value="Modelo" /></th>
+				<td><h:selectOneMenu
+						value="#{transporteBean.modelo.mode_id}" var="cboMo"
 						class="ui-selectonemenu-label ui-inputfield ui-corner-all">
 						<f:selectItem itemValue="-1"
-							itemLabel="-Seleccionar tipo de transporte" />
-						<f:selectItem itemValue="E" itemLabel="Enfermero" />
-						<f:selectItem itemValue="M" itemLabel="Médico" />
-						<f:selectItem itemValue="A" itemLabel="Administrativo" />
+							itemLabel="-Seleccionar modelo-" />
+						<f:selectItems value="#{transporteBean.listaModelos}"
+							var="mo" itemValue="#{mode.mode_id}"
+							itemLabel="#{mode.mode_desc}" />
 					</h:selectOneMenu></td>
 			</tr>
-
-			<tr>
-				<td><h:outputText value="Especialidad" /></td>
-				<td><h:inputText value="#{transporteBean.tran_espe}"
-						maxlength="30" /></td>
-			</tr>
-
-			<tr>
-				<th>Fecha de nacimiento:</th>
-				<td><p:calendar value="#{transporteBean.tran_fnac}" mode="popup"
-						popupIconOnly="true" showOn="button" pattern="dd/MM/yyyy">
-					</p:calendar></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Teléfono" /></td>
-				<td><h:inputText value="#{transporteBean.tran_telf}"
-						maxlength="20" /></td>
-			</tr>
-			<tr>
-				<td><h:outputText value="Dirección" /></td>
-				<td><h:inputText value="#{transporteBean.tran_dire}"
-						maxlength="50" /></td>
-			</tr>
+			
+		
 			<tr align="center">
 				<td colspan="2"><p:commandButton value="Registrar"
 						action="/xhtml/principal.xhtml"
