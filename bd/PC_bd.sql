@@ -70,7 +70,7 @@ insert into pc_TipoTransporte values(2,'Tipo Transporte 2',sysdate); commit;
   CACHE 20;
   commit;
 
-create table pc_Transporte( tran_id int primary key, ttra_id int, tran_desc varchar2(50), tran_cost decimal(5,2), tran_stoc int, mode_id int, marc_id int, tran_freg date, foreign key (ttra_id) references  pc_TipoTransporte(ttra_id), foreign key (mode_id) references  pc_Modelo(mode_id), foreign key (marc_id) references  pc_Marca(marc_id) ); commit;
+create table pc_Transporte( tran_id int primary key, ttra_id int, tran_desc varchar2(50), tran_cost decimal(10,2), tran_stoc int, mode_id int, marc_id int, tran_freg date, foreign key (ttra_id) references  pc_TipoTransporte(ttra_id), foreign key (mode_id) references  pc_Modelo(mode_id), foreign key (marc_id) references  pc_Marca(marc_id) ); commit;
 
 insert into pc_Transporte values (1,2,'Transporte 1',100.00,10,2,2,sysdate); commit;
 

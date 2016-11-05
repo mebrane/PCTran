@@ -40,6 +40,18 @@
 						maxlength="30" /></td>
 			</tr>
 			
+				<tr>
+				<td><h:outputText value="Costo:" /></td>
+				<td><h:inputText value="#{transporteBean.tran_cost}"
+						/></td>
+			</tr>
+			
+				<tr>
+				<td><h:outputText value="Stock:" /></td>
+				<td><h:inputText value="#{transporteBean.tran_stoc}"
+						/></td>
+			</tr>
+			
 
 		<tr>
 				<th><h:outputText value="Modelo" /></th>
@@ -49,11 +61,31 @@
 						<f:selectItem itemValue="-1"
 							itemLabel="-Seleccionar modelo-" />
 						<f:selectItems value="#{transporteBean.listaModelos}"
-							var="mo" itemValue="#{mode.mode_id}"
-							itemLabel="#{mode.mode_desc}" />
+							var="mo" itemValue="#{mo.mode_id}"
+							itemLabel="#{mo.mode_desc}" />
 					</h:selectOneMenu></td>
 			</tr>
 			
+				<tr>
+				<th><h:outputText value="Marca" /></th>
+				<td><h:selectOneMenu
+						value="#{transporteBean.marca.marc_id}" var="cboMo"
+						class="ui-selectonemenu-label ui-inputfield ui-corner-all">
+						<f:selectItem itemValue="-1"
+							itemLabel="-Seleccionar marca-" />
+						<f:selectItems value="#{transporteBean.listaMarcas}"
+							var="ma" itemValue="#{ma.marc_id}"
+							itemLabel="#{ma.marca_desc}" />
+					</h:selectOneMenu></td>
+			</tr>
+		
+			
+			<tr>
+				<th>Fecha registro:</th>
+				<td><p:calendar value="#{transporteBean.tran_freg}" mode="popup"
+						popupIconOnly="true" showOn="button" pattern="dd/MM/yyyy">
+					</p:calendar></td>
+			</tr>
 		
 			<tr align="center">
 				<td colspan="2"><p:commandButton value="Registrar"
